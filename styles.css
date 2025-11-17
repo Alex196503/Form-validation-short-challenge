@@ -1,0 +1,235 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    min-width:100%;
+    min-height: 100vh;
+    font-size: 16px;
+    color:#333;
+    line-height: 1.1;
+    font-family: 'Poppins',sans-serif;
+    background-image: url('bg-intro-desktop.png');
+    background-size:contain;
+    background-color: hsl(0, 100%, 74%);
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: top;
+    background-attachment: fixed ;
+}
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding:30px !important;
+    gap:5px !important;
+  
+}
+.box1{
+    padding: 10px;
+    margin-left:30px;
+    width:550px !important;
+    width: auto;
+    height: auto;
+}
+.box1 h1{
+    color:#ffffff;
+    padding:20px;
+    font-size:2.7em;
+    font-weight: bold;
+    margin-left:30px;
+    text-align: left;
+}
+.box1 p{
+    color:#ffffff;
+    padding:24px;
+    font-size:0.9em;
+    line-height: 1.4;
+    margin-left: 30px;
+}
+.box2{
+    padding:25px;
+    max-width: 750px;
+    width:100%;
+    min-height: 550px !important;
+    margin-left: 35px;
+}
+.box2 .smalltooltip{
+    background-color: hsl(248, 32%, 49%);
+    width:70%;
+    padding:10px;
+    height: 45px;
+    border: 1px solid hsl(249, 10%, 26%) ;
+    border-radius: 8px;
+    box-shadow: 3px 5px 5px hsl(240, 6%, 40%);
+    margin:0px 0px 20px 15px;
+}
+.box2 .smalltooltip p{
+    color:#ffffff;
+    text-align: center;
+    font-size:0.9em;
+    padding:5px;
+}
+.box2 .form{
+    width:70%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gainsboro;
+    padding:10px;
+    margin-left:20px;
+    height: auto;
+    height:78%;
+    gap:10px;
+    border-radius: 10px;
+    box-shadow:3px 5px 9px hsl(240, 6%, 40%);
+    background-color: #ffffff;
+}
+label{
+   position: absolute;
+   width:1px;
+   height: 1px;
+   border:0;
+   clip:rect(0,0,0,0);
+   padding:0;
+   margin:-1px;
+   white-space: nowrap;
+}
+.box2 input{
+    width:92%;
+    border-radius: 5px;
+    padding:15px;
+    border:1px solid hsl(246, 25%, 77%);
+    margin:15px 10px 5px 19px;
+}
+
+.box2 input::placeholder{
+    color:hsl(249, 10%, 26%);
+    font-size:1.1em;
+    padding-left:13px;
+    font-weight: bold;
+}
+.box2 input:focus{
+    border: none;
+    outline:2px solid grey;
+}
+.box2 button{
+    margin:10px 0px 10px 20px;
+    cursor: pointer;
+    color:white;
+    background-color: hsl(154, 59%, 51%);
+    width:92%;
+    padding:12px;
+    font-size:0.9em;
+    text-transform: uppercase;
+    font-weight: bold;
+    border:2px solid green;
+    border-radius: 4px;
+    box-shadow: 4px 4px 7px grey;
+}
+.errorMessage{
+    text-align: left !important;
+    font-size: 0.8em !important;
+    color:rgb(232, 62, 62) !important;
+    padding:3px !important;
+    margin-left: 25px;
+}
+.box2 button:hover{
+    opacity:0.8;
+    transition: opacity 0.3s ease;
+}
+.box2 p{
+    font-size:0.8em;
+    text-align: center;
+    color:hsl(246, 25%, 77%);
+}
+.box2 a{
+    text-decoration: none;
+    color:hsl(0, 100%, 74%);
+    font-weight: bold;
+}
+ .input-group{
+        position: relative;
+    }
+    .input-group img{
+        position: absolute;
+        top:30%;
+        left:75%;
+        transform: translateX(20px);
+        width:30px;
+        height: 30px;
+        display: none;
+    }
+    
+@media(max-width:750px)
+{
+    body{
+        overflow-x: hidden;
+        width:50vw;
+        min-height: 100vh;
+        background-image: url('bg-intro-mobile.png');
+        background-size: cover;
+    }
+    .main{
+        display: flex;
+        flex-direction: column;
+    }
+    .main .box1 h1{
+        font-size:1.9em;
+        padding:0;
+        text-align: center;
+        text-wrap: balance;
+        margin:20px 30px 0px 10px;
+    }
+  
+    .main .box1 p{
+        text-wrap: balance;
+        text-wrap: balance;
+        word-spacing: 2px;
+        font-size: 1.1em;
+        text-align: center;
+        margin-right:30px;
+    }
+    .main .box2 .smalltooltip{
+        height:90px;
+        width:60%;
+        margin-right: 50px;
+    }
+    .main .box2 .smalltooltip p{
+        text-align: center;
+        margin-left:20px;
+        line-height: 1.6;
+        text-wrap: balance;
+    }
+    .box2{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .form{
+        width:61% !important;
+        margin-right: 50px;
+    }
+    .form input{
+        transform: translateX(-6px);
+        width:91%;
+    }
+   
+    .form button{
+        padding:14px;
+        margin-top:13px;
+        margin-left:10px;
+        height:54px;
+    }
+    .form p{
+        margin-top:0;
+        margin-left: 20px;
+        font-size: 0.7em;
+        line-height: 1.4;
+    }
+    
+}

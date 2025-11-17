@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up form</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+      <link rel="icon" type="image/x-icon" href="favicon-32x32.png">
+    <script defer src="script.js"></script>
+    </head>
+<body>
+    <main class="main">
+        <section class="box1">
+            <h1>Learn to code by watching others</h1>
+            <p>See how experienced developers solve problems in real-time. Watching scripted tutorials is great, but understanding how developers think is invaluable.</p>
+        </section>
+        <section class="box2">
+            <div class="smalltooltip">
+                <p><strong>Try it free 7 days</strong> then $20/mo. thereafter</p>
+            </div>
+            <div class="form">
+                <form>  
+                    <div class="input-group">
+                    <label for="firstname">Introduce your First name</label>
+                    <input type="text" minlength="4" maxlength="20" name="firstName" placeholder="First Name" value="" id="firstname">  
+                    <img src="icon-error.svg" alt="Image with an error. Something is not good!">
+                    <p class="errorMessage"></p>
+                </div>
+                    <div class="input-group" id="second">
+                    <label for="lastName"> Introduce your last name</label>
+                <input type="text" minlength="4" maxlength="20" name="lastName" placeholder="Last Name" value="" id="lastName">
+                <img src="icon-error.svg" alt="Image with an error. Something is not good!">
+                <p class="errorMessage"></p>
+            </div>
+                    <div class="input-group" id="third">
+                <label for="email">Introduce your email</label>
+                    <input type="text" minlength="4" maxlength="30" name="email" placeholder="Email Address" value="" id="email">
+                <img src="icon-error.svg" alt="Image with an error. Something is not good!">    
+                <p class="errorMessage"></p>
+            </div>
+                    <div class="input-group" id="fourth">
+                    <label for="password">Introduce your password</label>
+                    <input type="password" minlength="4" maxlength="20" name="password" placeholder="Introduce your password" value="" id="password">
+                <img src="icon-error.svg" alt="Image with an error. Something is not good!">   
+                <p class="errorMessage"></p>
+            </div>
+                    <button type="submit">Claim your free trial</button>
+            </form>
+                <p>By clicking the button, you are agreeing to our <a href=""> Terms and Services </a></p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
