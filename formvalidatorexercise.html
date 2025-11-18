@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            min-height: 70vh;
+            justify-content: center;
+            align-items: center;
+            gap:15px;
+            flex-direction: column;
+        }
+        .article{
+            padding:5px;
+            background-color: gainsboro;
+            width:50%;
+            height:320px;
+            display: flex;
+            align-items: flex-start;
+            gap:10px;
+            justify-content: flex-start;
+        }
+        form{
+            width:100%;
+        }
+        label{
+            padding:5px;
+            font-size:17px;
+        }
+        .container{
+            padding:20px;
+            width:100%;
+            margin-left: 13px;
+            display: flex;
+            flex-direction: column;
+            gap:10px;
+        }
+        .article input{
+            width:75%;
+            padding:10px;
+            border-radius: 5px;
+            border:1px solid grey;
+            box-shadow: 3px 5px 10px black;
+        }
+        button{
+            background-color: rgb(44, 142, 44);
+            color:white;
+            display: inline-block;
+            margin-left: 30px;
+            border:none;
+            padding:10px;
+            margin-top: 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            width:72%;
+        }
+        .list{
+            padding:10px;
+            background-color: gray;
+            margin:0 auto;
+            width:50%;
+            height: auto;
+            display: none;
+            flex-direction: column;
+        }
+        .list p{
+            padding:5px;
+            color:black;
+            font-weight: bold;
+            margin-left: 30px;
+        }
+        ul{
+            padding:10px;
+            margin-left: 40px;
+            height: auto;
+        }
+        ul li{
+            list-style-type: none;
+            padding:5px;
+            font-size:20px;
+            margin-bottom: 5px;
+        }
+        .valid::before{
+            color:rgb(54, 197, 54);
+            content:'✔';
+            position: relative;
+            right:25px;
+        }
+        .invalid::before{
+            content:'✖';
+            color:rgb(205, 38, 38);
+            position: relative;
+            right:25px;
+        }
+    </style>
+</head>
+<body>
+    <article class="article">
+        <form>
+            <div class="container">
+            <label for="username">Username</label>
+            <input type="text" minlength="4" required maxlength="20" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" name="username" value="" id="username">
+            </div>
+            <div class="container">
+                <label for="password">Password</label>
+            <input type="password" required name="password" id="password" value="">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </article>
+      <div class="list">
+        <p>Paragraf must contain the following:</p>
+        <ul class="ul">
+            <li> A <strong> lowercase </strong> letter</li>
+            <li class="kid2">A <strong>capital </strong> letter</li>
+            <li >A <strong>number </strong></li>
+            <li>At least one symbol</li>
+            <li>Minimum <strong> 8 characters </strong></li>
+        </ul>
+      </div>
+</body>
+<script>
+    let inputPassword=document.querySelector('#password');
+    let container=document.querySelector('.list');
+    let lists=document.querySelectorAll('li');
+    let firstKid=document.querySelector('ul').firstElementChild;
+    let lastKid=document.querySelector('ul').lastElementChild;
+    let fourthKid=lastKid.previousElementSibling;
+    let thirdKid=fourthKid.previousElementSibling;
+    let secondKid=firstKid.nextElementSibling;
+    let form=document.querySelector('form');
+    inputPassword.addEventListener(('focus'),()=>{
+        container.style.display='flex';
+     
+    })
+    inputPassword.addEventListener(('blur'),()=>{
+        container.style.display='none';
+    })
+    let firstfunction=null;
+    let secondfunction=null;
+    let thirdfunction=null;
+    let fourthfunction=null;
+    let fifthfunction=null;
+    inputPassword.addEventListener(('keyup'),(e)=>{
+        inputPassword.setCustomValidity('');
+        firstfunction=validateLowerCases(firstKid,inputPassword.value);            
+        secondfunction=validateUpperCases(secondKid, inputPassword.value);
+        thirdfunction=validateNumbers(thirdKid, inputPassword.value);
+        fourthfunction=validateSymbols(fourthKid,inputPassword.value);
+        fifthfunction=checkLength(lastKid, inputPassword.value);  
+    })
+    form.addEventListener(('submit'),(e)=>{
+        e.preventDefault();
+        
+
+        if(firstfunction==true && secondfunction==true && thirdfunction==true && fourthfunction==true && fifthfunction==true)
+    {
+        alert('Form submitted succesfully!');
+        form.reset();
+        let lists=document.querySelectorAll('li');
+        lists.forEach((list)=>{
+            list.classList='';
+            list.style.color='black';
+        })   
+    }
+    else{
+        inputPassword.setCustomValidity('Password must contain at least one uppercase, one lower case, one symbol, one digit, and length of 8 characters');
+        inputPassword.reportValidity();
+
+    }
+    })
+    function validateNumbers(selector, password)
+    {
+        let passwordRegex=/[0-9]/;
+        let isValid=true;
+        if(passwordRegex.test(password)==false)
+    {
+         selector.classList.remove('valid');
+        selector.classList.add('invalid');
+        selector.style.color='rgb(205, 38, 38)';
+        isValid=false;
+    }
+    else{
+        selector.classList.remove('invalid');
+        selector.classList.add('valid');
+        selector.style.color='rgb(54, 197, 54)';
+
+    }
+    return isValid;
+    }
+    function validateLowerCases(selector,password)
+    {
+        let passwordRegex=/[a-z]/;
+        let isValid=true;
+        if(passwordRegex.test(password)==false)
+    {
+         selector.classList.remove('valid');
+        selector.classList.add('invalid');
+        selector.style.color='rgb(205, 38, 38)';
+        isValid=false;
+    }
+    else{
+          selector.classList.remove('invalid');
+        selector.classList.add('valid');
+        selector.style.color='rgb(54, 197, 54)';
+    }
+    return isValid;
+    }
+    function validateUpperCases(selector, password)
+    {
+        let passwordRegex=/[A-Z]/;
+        let isValid=true;
+          if(passwordRegex.test(password)==false)
+    {
+         selector.classList.remove('valid');
+        selector.classList.add('invalid');
+        selector.style.color='rgb(205, 38, 38)';
+        isValid=false;
+    }
+    else{
+          selector.classList.remove('invalid');
+        selector.classList.add('valid');
+        selector.style.color='rgb(54, 197, 54)';
+    }
+    return isValid;
+    }
+    function validateSymbols(selector, password)
+    {
+        let passwordRegex=/[!@#$%^&*()]/;
+        let isValid=true;
+        if(passwordRegex.test(password)==false)
+    {
+                 selector.classList.remove('valid');
+        selector.classList.add('invalid');
+        selector.style.color='rgb(205, 38, 38)';
+        isValid=false;
+    }
+    else{
+        selector.classList.remove('invalid');
+        selector.classList.add('valid');
+        selector.style.color='rgb(54, 197, 54)'; 
+    }
+    return isValid;
+    }
+    function checkLength(selector, password)
+    {
+        let isValid=true;
+        if(password.length <8)
+    {   selector.classList.remove('valid');
+        selector.classList.add('invalid');
+        selector.style.color='rgb(205, 38, 38)';
+        isValid=false;
+    }
+    else{
+        selector.classList.remove('invalid');
+         selector.classList.add('valid');
+        selector.style.color='rgb(54, 197, 54)';
+    }
+    return isValid;
+    }
+    
+</script>
+</html>
